@@ -43,19 +43,16 @@ public class Main {
             System.out.println("2 - Filtern Vehcles nach Typ und Status");
             System.out.println("3 - Sortieren nach ownerCity ");
             System.out.println("4 - Sortierte Liste in der Datei speichern");
-            System.out.println("5 - Top5 Ereignise nach berechneten Punkten anzeigen");
-            System.out.println("6 - Berechne Total Scores pro Fahrer");
-            System.out.println("7 - Vereine loschen");
-            System.out.println("8 - Vereine aktualisieren");
+            System.out.println("5 - Risikoscore pro Ereignis anzeigen, erste 5 Ereignise");
             System.out.println("0 - Exit");
             int choice = sc.nextInt();
             sc.nextLine();
 
             switch (choice) {
                 case 1:
-                    System.out.println("Fahrer loaded " + (long) VehicleRepo.getAll().size());
-                    System.out.println("Ereignise loaded " + (long) TrafficEventRepo.getAll().size());
-                    System.out.println("Strafen loaded " + (long) FineRepo.getAll().size());
+                    System.out.println("Vehicles loaded " + (long) VehicleRepo.getAll().size());
+                    System.out.println("Events loaded " + (long) TrafficEventRepo.getAll().size());
+                    System.out.println("Fines loaded " + (long) FineRepo.getAll().size());
                     List<Vehicle> allFahrer = VehicleService.getAllVehicle();
                     allFahrer.forEach(System.out::println);
                     break;
@@ -89,6 +86,9 @@ public class Main {
                 case 5:
                     TrafficEventService.executeTask5();
                     break;
+                case 0:
+                    return;
+
 
             }
         }
