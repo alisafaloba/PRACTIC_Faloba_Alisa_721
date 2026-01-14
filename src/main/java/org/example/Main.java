@@ -81,7 +81,7 @@ public class Main {
                                         .map(Vehicle::toString)
                                         .collect(Collectors.toList())
                         );
-                        System.out.println("Die sortierte Liste der Fahrer wurde in der Datei " + filePath + " gespeichert.");
+                        System.out.println("Die sortierte Liste der Vehicles wurde in der Datei " + filePath + " gespeichert.");
                     } catch (IOException e) {
                         System.out.println("Fehler beim Schreiben in die Datei: " + e.getMessage());
                     }
