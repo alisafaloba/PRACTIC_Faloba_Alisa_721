@@ -41,7 +41,7 @@ public class Main {
             System.out.println("\n--- MENU ---");
             System.out.println("1 - Anzahl der Vehicles,Ereignise und Fines und alle Vehicles anzeigen");
             System.out.println("2 - Filtern Vehcles nach Typ und Status");
-            System.out.println("3 - Sortieren nach ");
+            System.out.println("3 - Sortieren nach ownerCity ");
             System.out.println("4 - Sortierte Liste in der Datei speichern");
             System.out.println("5 - Top5 Ereignise nach berechneten Punkten anzeigen");
             System.out.println("6 - Berechne Total Scores pro Fahrer");
@@ -68,6 +68,25 @@ public class Main {
                     filteredVehicles.forEach(System.out::println);
                     break;
                 case 3:
+                    List<Vehicle> sortedVehicles = VehicleService.sortierenNachOwnerCity();
+                    sortedVehicles.forEach(System.out::println);
+                    break;
+                case 4:
+                    List<Vehicle> sortedVehicles1 = VehicleService.sortierenNachOwnerCity();
+                    String filePath = "sorted_fahrer.txt";
+                    try {
+                        Files.write(
+                                Paths.get(filePath),
+                                sortedVehicles1.stream()
+                                        .map(Vehicle::toString)
+                                        .collect(Collectors.toList())
+                        );
+                        System.out.println("Die sortierte Liste der Fahrer wurde in der Datei " + filePath + " gespeichert.");
+                    } catch (IOException e) {
+                        System.out.println("Fehler beim Schreiben in die Datei: " + e.getMessage());
+                    }
+                    break;
+
             }
         }
     }

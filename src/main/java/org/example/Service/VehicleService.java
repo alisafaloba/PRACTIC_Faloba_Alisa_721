@@ -36,4 +36,11 @@ public class VehicleService {
         return VehicleRepo.getAll().stream()
                 .filter(b -> Objects.equals(b.getType().toString(), type) && b.getStatus() == status).collect(Collectors.toList());
     }
+
+    public List<Vehicle> sortierenNachOwnerCity() throws IOException {
+        return VehicleRepo.getAll().stream()
+                .sorted(Comparator.comparing(Vehicle::getOwnerCity)
+                        .thenComparing(Comparator.comparing(Vehicle::getId).reversed()))
+                .collect(Collectors.toList());
+    }
 }
