@@ -86,6 +86,9 @@ public class Main {
                         System.out.println("Fehler beim Schreiben in die Datei: " + e.getMessage());
                     }
                     break;
+                case 5:
+                    TrafficEventService.executeTask5();
+                    break;
 
             }
         }
