@@ -31,4 +31,9 @@ public class VehicleService {
     public Vehicle getVehicle(Integer id) throws IOException {
         return VehicleRepo.findById(id);
     }
+
+    public List<Vehicle> filternachTypUndStatus(String type, VehicleStatus status) throws IOException {
+        return VehicleRepo.getAll().stream()
+                .filter(b -> Objects.equals(b.getType().toString(), type) && b.getStatus() == status).collect(Collectors.toList());
+    }
 }

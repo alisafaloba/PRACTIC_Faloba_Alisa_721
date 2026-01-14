@@ -40,8 +40,8 @@ public class Main {
         while (true) {
             System.out.println("\n--- MENU ---");
             System.out.println("1 - Anzahl der Vehicles,Ereignise und Fines und alle Vehicles anzeigen");
-            System.out.println("2 - Filtern nach Team");
-            System.out.println("3 - Sortieren nach SkillLevel");
+            System.out.println("2 - Filtern Vehcles nach Typ und Status");
+            System.out.println("3 - Sortieren nach ");
             System.out.println("4 - Sortierte Liste in der Datei speichern");
             System.out.println("5 - Top5 Ereignise nach berechneten Punkten anzeigen");
             System.out.println("6 - Berechne Total Scores pro Fahrer");
@@ -59,6 +59,15 @@ public class Main {
                     List<Vehicle> allFahrer = VehicleService.getAllVehicle();
                     allFahrer.forEach(System.out::println);
                     break;
+                case 2:
+                    System.out.print("Geben Sie den Fahrzeugtyp ein: ");
+                    String type = sc.nextLine();
+                    System.out.print("Geben Sie den Fahrzeugstatus ein: ");
+                    String status = sc.nextLine();
+                    List<Vehicle> filteredVehicles = VehicleService.filternachTypUndStatus(type, VehicleStatus.valueOf(status));
+                    filteredVehicles.forEach(System.out::println);
+                    break;
+                case 3:
             }
         }
     }
